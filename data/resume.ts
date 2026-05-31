@@ -7,7 +7,7 @@ export const resumeData = {
     phone: "+1 (408) 210-8953",
     location: "San Jose, CA",
     summary:
-      "As a Master’s student in Computer Engineering at San Jose State University, I’m passionate about solving complex problems through software engineering, cloud infrastructure, and applied AI/ML. I bring hands-on experience from State Street and Syngenta, developing intelligent internal tools, automating infrastructure with Terraform, and contributing to the design of scalable systems on AWS and Azure supporting thousands of users.",
+      "Recently graduated M.S. Computer Engineering from San Jose State University. I bring 2+ years of production experience at State Street and Syngenta building cloud infrastructure on AWS, automating deployments with Terraform, and developing LLM and RAG-based AI pipelines. Actively seeking full-time Cloud and AI Engineering roles.",
     links: [
       {
         label: "LinkedIn",
@@ -22,16 +22,16 @@ export const resumeData = {
 
   top_impact: [
     {
-      metric: "$500k",
-      description: "Annual cloud savings architected at Syngenta",
+      metric: "$500k / yr",
+      description: "Cloud cost savings architected at Syngenta",
     },
     {
       metric: "60%+",
-      description: "Reduction in manual effort via Terraform PoC",
+      description: "Manual effort cut via Terraform automation at State Street",
     },
     {
       metric: "95%",
-      description: "Accuracy in AI turn-signal prediction system",
+      description: "Turn-signal prediction accuracy in Driver Assistance System",
     },
   ],
 
@@ -77,7 +77,7 @@ export const resumeData = {
   projects: [
     {
       title: "Dynamic Weight Learning for Self-RAG",
-      dates: "Aug 2025 – Dec 2025",
+      dates: "Completed Dec 2025",
       stack: ["Python", "PyTorch", "LLM", "RAG"],
       bullets: [
         "Developed a dynamic weighting framework for Self-RAG pipelines to improve relevance of retrieved context, addressing limitations of static weighting across retrieved documents during LLM generation.",
@@ -87,7 +87,7 @@ export const resumeData = {
     },
     {
       title: "Omnireasoner: Knowledge Graph Reasoning",
-      dates: "Aug 2025 – Mar 2026",
+      dates: "Completed Mar 2026",
       stack: ["Knowledge Graphs", "LLMs", "Graph Traversal"],
       bullets: [
         "Built a knowledge-graph-augmented reasoning pipeline integrating graph traversal with LLM prompting to improve factual consistency in complex question answering.",
@@ -168,7 +168,7 @@ export const resumeData = {
       institution: "San Jose State University",
       degree: "Master of Science in Computer Engineering",
       location: "San Jose, CA, USA",
-      date: "Expected May 2026",
+      date: "May 2026",
     },
     {
       institution: "Vishwakarma Institute of Technology",

@@ -11,11 +11,24 @@ export const Hero = ({ data }: { data: any }) => {
     data.links?.find((link: any) => link.label === "GitHub")?.url || "#";
 
   return (
-    <section className="min-h-[60vh] flex flex-col justify-center">
+    <section id="home" className="min-h-[60vh] flex flex-col justify-center">
+      {/* Open to Work badge */}
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="mb-6"
+      >
+        <span className="inline-flex items-center gap-2 bg-green-500/10 border border-green-500/30 text-green-400 text-xs font-mono px-3 py-1.5 rounded-full">
+          <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
+          Open to full-time roles
+        </span>
+      </motion.div>
+
       {/* Intro */}
       <motion.p
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.05 }}
         className="text-blue-400 font-mono mb-4"
       >
         Hi, my name is
@@ -36,7 +49,7 @@ export const Hero = ({ data }: { data: any }) => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
-        className="text-3xl md:text-5xl font-bold text-slate-400 mb-8"
+        className="text-3xl md:text-5xl font-bold mb-8 bg-gradient-to-r from-blue-400 via-cyan-300 to-violet-400 bg-clip-text text-transparent"
       >
         Engineering the intersection of Cloud & Intelligence.
       </motion.h2>

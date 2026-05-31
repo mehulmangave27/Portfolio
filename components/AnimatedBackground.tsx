@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 
 export const AnimatedBackground = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -10,7 +10,7 @@ export const AnimatedBackground = () => {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    let particles: any[] = [];
+    let particles: Particle[] = [];
     let animationFrameId: number;
 
     const resize = () => {
@@ -23,9 +23,9 @@ export const AnimatedBackground = () => {
       constructor() {
         this.x = Math.random() * canvas!.width;
         this.y = Math.random() * canvas!.height;
-        this.size = Math.random() * 2 + 0.5;
-        this.speedX = Math.random() * 0.5 - 0.25;
-        this.speedY = Math.random() * 0.5 - 0.25;
+        this.size = Math.random() * 1.5 + 0.5;
+        this.speedX = Math.random() * 0.4 - 0.2;
+        this.speedY = Math.random() * 0.4 - 0.2;
       }
       update() {
         this.x += this.speedX;
@@ -37,21 +37,43 @@ export const AnimatedBackground = () => {
       }
       draw() {
         if (!ctx) return;
-        ctx.fillStyle = "rgba(100, 150, 255, 0.15)";
+        ctx.fillStyle = "rgba(100, 160, 255, 0.5)";
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx.fill();
       }
     }
 
+    const CONNECTION_DIST = 130;
+
+    const drawConnections = () => {
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < CONNECTION_DIST) {
+            const opacity = (1 - dist / CONNECTION_DIST) * 0.1;
+            ctx!.strokeStyle = `rgba(100, 160, 255, ${opacity})`;
+            ctx!.lineWidth = 0.6;
+            ctx!.beginPath();
+            ctx!.moveTo(particles[i].x, particles[i].y);
+            ctx!.lineTo(particles[j].x, particles[j].y);
+            ctx!.stroke();
+          }
+        }
+      }
+    };
+
     const init = () => {
       particles = [];
-      const count = Math.min(window.innerWidth / 10, 100);
+      const count = Math.min(Math.floor(window.innerWidth / 12), 90);
       for (let i = 0; i < count; i++) particles.push(new Particle());
     };
 
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
+      drawConnections();
       particles.forEach(p => { p.update(); p.draw(); });
       animationFrameId = requestAnimationFrame(animate);
     };
@@ -71,7 +93,6 @@ export const AnimatedBackground = () => {
     <canvas
       ref={canvasRef}
       className="fixed inset-0 -z-10 bg-slate-950 pointer-events-none"
-      style={{ filter: "blur(1px)" }}
     />
   );
 };

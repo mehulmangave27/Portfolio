@@ -1,7 +1,16 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ExternalLink, Terminal } from "lucide-react";
+import { ExternalLink, Terminal, Brain, Share2, Navigation, Activity } from "lucide-react";
+
+const getProjectIcon = (title: string) => {
+  const t = title.toLowerCase();
+  if (t.includes("rag") || t.includes("weight") || t.includes("llm")) return <Brain size={24} />;
+  if (t.includes("graph") || t.includes("omni") || t.includes("knowledge")) return <Share2 size={24} />;
+  if (t.includes("driver") || t.includes("assistance")) return <Navigation size={24} />;
+  if (t.includes("arrhythmia") || t.includes("detection") || t.includes("svm")) return <Activity size={24} />;
+  return <Terminal size={24} />;
+};
 
 export const Projects = ({ project }: { project: any }) => {
   return (
@@ -11,7 +20,7 @@ export const Projects = ({ project }: { project: any }) => {
     >
       <div className="flex justify-between items-start mb-6">
         <div className="p-3 bg-blue-500/10 rounded-lg text-blue-400">
-          <Terminal size={24} />
+          {getProjectIcon(project.title)}
         </div>
 
         <div className="flex gap-4 text-slate-400">

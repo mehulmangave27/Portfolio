@@ -5,15 +5,20 @@ import { Projects } from "@/components/Projects";
 import { Skills } from "@/components/Skills";
 import { AnimatedBackground } from "@/components/AnimatedBackground";
 import { ImpactBar } from "@/components/ImpactBar";
+import { Navbar } from "@/components/Navbar";
+import { Contact } from "@/components/Contact";
+import { ScrollProgress } from "@/components/ScrollProgress";
 
 export default function Portfolio() {
   return (
     <main className="relative min-h-screen text-slate-100 selection:bg-blue-500/30">
+      <ScrollProgress />
       <AnimatedBackground />
-      
-      <div className="max-w-6xl mx-auto px-6 lg:px-12 py-20 space-y-32">
+      <Navbar name={resumeData.basics.name} />
+
+      <div className="max-w-6xl mx-auto px-6 lg:px-12 pt-28 pb-20 space-y-32">
         <Hero data={resumeData.basics} />
-        
+
         <ImpactBar metrics={resumeData.top_impact} />
 
         <section id="experience">
@@ -39,9 +44,11 @@ export default function Portfolio() {
         </section>
 
         <Skills skills={resumeData.skills} education={resumeData.education} />
-        
+
+        <Contact data={resumeData.basics} />
+
         <footer className="pt-20 border-t border-slate-800 text-center text-slate-500 text-sm">
-          <p>© {new Date().getFullYear()} Mehul Mangave — Cloud & AI Engineering</p>
+          <p>© {new Date().getFullYear()} Mehul Mangave | Cloud & AI Engineering</p>
         </footer>
       </div>
     </main>
