@@ -7,7 +7,7 @@ export const resumeData = {
     phone: "+1 (408) 210-8953",
     location: "San Jose, CA",
     summary:
-      "Recently graduated M.S. Computer Engineering from San Jose State University. I bring 2+ years of production experience at State Street and Syngenta building cloud infrastructure on AWS, automating deployments with Terraform, and developing LLM and RAG-based AI pipelines. Actively seeking full-time Cloud and AI Engineering roles.",
+      "M.S. Computer Engineering from San Jose State University with 2+ years of production experience at State Street and Syngenta. I migrate cloud estates to Terraform, cut AWS spend at scale, and build RAG and knowledge-graph systems on top of the infrastructure. Actively seeking full-time Cloud & AI Engineering roles.",
     links: [
       {
         label: "LinkedIn",
@@ -30,19 +30,19 @@ export const resumeData = {
       description: "Manual effort cut via Terraform automation at State Street",
     },
     {
-      metric: "95%",
-      description: "Turn-signal prediction accuracy in Driver Assistance System",
+      metric: "100+",
+      description: "AWS accounts migrated to Terraform Cloud at Syngenta",
     },
   ],
 
   experience: [
     {
       company: "State Street Bank and Trust",
-      role: "Cloud Engineering Intern",
+      role: "Cloud & AI Infrastructure Engineer Intern",
       location: "Boston, US",
       dates: "June 2025 – Aug 2025",
       bullets: [
-        "Owned the full software development lifecycle for an AI-powered internal chatbot using NLP to retrieve answers from Confluence docs, improving knowledge access and reducing support overhead.",
+        "Built a production RAG system over internal Confluence documentation with Python backend APIs, giving engineers self-serve answers and cutting repeat support questions to the platform team.",
         "Engineered a Terraform automation proof of concept (PoC) that dynamically generates infrastructure templates based on user-defined requirements, utilizing in-house modules to streamline deployment workflows and reduce manual effort by over 60%.",
         "Collaborated with the Service Enablement team to architect, develop, and document reusable Terraform modules for provisioning various AWS services, contributing to scalable infrastructure practices and adherence to organizational standards.",
       ],
@@ -53,12 +53,11 @@ export const resumeData = {
       location: "Pune, India",
       dates: "June 2023 – July 2024",
       bullets: [
-        "Architected multi-tier cloud infrastructure that supported increased user demand and optimized resource allocation, resulting in a 25% decrease in operational costs while maintaining high availability for over 10,000 users.",
-        "Collaborated with senior engineers to migrate over 100 AWS accounts to Terraform Cloud, streamlining infrastructure provisioning and management. This migration significantly improved cloud operations efficiency and saved considerable time.",
-        "Collaborated with the applications team to deploy scalable, low-latency services using Terraform, cutting deployment time by 40% and achieving 99.9% uptime.",
-        "Managed AWS DynamoDB migration from legacy to new AWS accounts, ensuring a smooth transition. Managed cloud-based database migration tasks, optimizing the process for efficiency and minimal downtime.",
-        "Led the development of cost-saving strategies in AWS, optimizing underutilized resources and achieving $500k in annual savings by effectively scaling down unnecessary resources.",
-        "Implemented Sentinel policies for AWS and Azure services, integrating them with Terraform Cloud, which improved resource verification speed by 50%. This integration enhanced overall efficiency, reducing manual checks by 70%.",
+        "Migrated 100+ AWS accounts to Terraform Cloud, replacing manual provisioning with version-controlled IaC that eliminated configuration drift and gave every team a consistent, auditable, Git-reviewed deployment path.",
+        "Cut $500K in annual AWS spend by rightsizing over-provisioned EC2 and RDS instances, scheduling non-production environments to power down outside business hours, and decommissioning idle volumes, snapshots, and load balancers.",
+        "Built reusable Terraform modules and CI/CD deployment pipelines that cut deployment time 40% and sustained 99.9% uptime for 10,000+ users, letting application teams ship low-latency services without provisioning infrastructure by hand.",
+        "Implemented Sentinel policy-as-code across AWS and GCP in Terraform Cloud, automating compliance and security checks at plan time to block non-compliant resources before deployment and reducing manual review effort by 70%.",
+        "Migrated DynamoDB tables across AWS accounts using on-demand backup and restore, validating record counts and throughput configuration after cutover to complete the transition with zero data loss and minimal downtime.",
       ],
     },
     {
@@ -74,24 +73,53 @@ export const resumeData = {
     },
   ],
 
+  terraform_modules: [
+    {
+      name: "ec2-terraform-module",
+      description:
+        "Reusable Terraform module to provision and configure AWS EC2 instances with sane, parameterized defaults.",
+      url: "https://github.com/mehulmangave27/ec2-terraform-module",
+    },
+    {
+      name: "rds-terraform-module",
+      description:
+        "Reusable Terraform module for provisioning managed AWS RDS databases with configurable engine, sizing, and networking.",
+      url: "https://github.com/mehulmangave27/rds-terraform-module",
+    },
+  ],
+
   projects: [
     {
-      title: "Dynamic Weight Learning for Self-RAG",
-      dates: "Completed Dec 2025",
-      stack: ["Python", "PyTorch", "LLM", "RAG"],
+      title: "Magpie — Ambient Study Agent",
+      dates: "Hackathon · 2026",
+      award: "1st Prize — Most Innovative Use of Agents · Harness Engineering Hack",
+      link: "https://github.com/shantanujoshi25/magpie",
+      featured: true,
+      stack: ["Guild.ai Agents", "ClickHouse", "Next.js", "OpenUI", "Python"],
       bullets: [
-        "Developed a dynamic weighting framework for Self-RAG pipelines to improve relevance of retrieved context, addressing limitations of static weighting across retrieved documents during LLM generation.",
-        "Implemented adaptive scoring algorithms using Python and PyTorch to re-rank and dynamically weight retrieved passages across 1000+ query evaluations, improving contextual grounding and reducing irrelevant retrieval influence.",
-        "Improved response accuracy and relevance in retrieval-augmented generation workflows by ~18% in evaluation experiments while maintaining low inference overhead through optimized retrieval scoring logic.",
+        "Built an ambient study tool that watches the system clipboard and treats every copy as an implicit highlight — snippets are classified into topic notebooks, streamed to ClickHouse, and surfaced on a live dashboard with summaries and a chat assistant.",
+        "Designed the system as four composed, single-purpose Guild.ai agents (classify, summarize, re-file, chat) kept pure as text-in/text-out, with all database access isolated to the watcher and API routes.",
+        "Hardened the demo with a non-blocking capture queue, server-side validation and deterministic fallback for malformed LLM output, and scoped ALTER TABLE mutations so the dashboard never breaks on a bad agent response.",
       ],
     },
     {
-      title: "Omnireasoner: Knowledge Graph Reasoning",
-      dates: "Completed Mar 2026",
+      title: "Dynamic Weight Learning for Self-RAG",
+      dates: "Aug 2025 – Dec 2025 · Team of 2",
+      link: "https://github.com/sp1ffygeek/dynamic_weight_learning_for_self-rag",
+      stack: ["Python", "PyTorch", "LLM", "RAG"],
+      bullets: [
+        "Built a dynamic weighting framework for Self-RAG pipelines that re-ranks and adaptively weights retrieved passages by query relevance, replacing static weighting that treated all retrieved documents equally regardless of context.",
+        "Implemented adaptive scoring in Python and PyTorch across 1,000+ query evaluations, improving response accuracy and relevance by ~18% while keeping inference overhead low through optimized retrieval scoring logic.",
+      ],
+    },
+    {
+      title: "Omnireasoner: Knowledge Graph Reasoning System",
+      dates: "Aug 2025 – Mar 2026 · Team of 4",
+      link: "https://github.com/SmithaKedila/KG-TRACES",
       stack: ["Knowledge Graphs", "LLMs", "Graph Traversal"],
       bullets: [
-        "Built a knowledge-graph-augmented reasoning pipeline integrating graph traversal with LLM prompting to improve factual consistency in complex question answering.",
-        "Designed entity linking and traversal workflows over a graph with 10K+ entities and relations, generating interpretable reasoning paths and reducing hallucinated responses by ~15% during evaluation experiments.",
+        "Built a knowledge-graph-augmented reasoning pipeline combining graph traversal with LLM prompting over a 10K+ entity graph, improving factual consistency on complex multi-hop question answering.",
+        "Generated interpretable reasoning paths through entity linking and graph traversal, reducing hallucinated responses by ~15% in evaluation by grounding answers in retrieved graph relations rather than model priors.",
       ],
     },
     {
@@ -115,43 +143,30 @@ export const resumeData = {
   ],
 
   skills: {
-    languages: [
-      "Terraform",
-      "Python",
-      "C",
-      "C++",
-      "Java",
-      "SQL",
-      "NoSQL",
-      "PostgreSQL",
-      "OOP",
-    ],
-    frameworks: [
-      "Django",
-      "React",
-      "Node.js",
-      "Git",
-      "CI/CD",
-      "Jenkins",
-      "MongoDB",
-      "TensorFlow",
-      "PyTorch",
-    ],
-    platforms: [
-      "AWS",
+    languages: ["Python", "C/C++", "Java", "Bash", "SQL", "Go"],
+    cloud: [
+      "AWS (EC2, S3, RDS, DynamoDB, Lambda, ECS/ECR, API Gateway, ELB)",
+      "GCP",
       "Azure",
       "Kubernetes",
       "Docker",
-      "Linux",
-      "Windows",
-      "GitHub Actions",
-      "GitLab",
+    ],
+    iac: [
+      "Terraform",
+      "Terraform Cloud",
+      "Sentinel (Policy-as-Code)",
+      "CloudWatch",
+      "Prometheus",
+      "Grafana",
     ],
     ai_ml: [
-      "LLM / RAG Pipelines",
+      "RAG Pipelines",
+      "Vector Embeddings",
       "Knowledge Graphs",
-      "Vector Search / Embeddings",
-      "Hugging Face Transformers",
+      "AWS Bedrock",
+      "Vertex AI",
+      "PyTorch",
+      "TensorFlow",
     ],
     coursework: [
       "Designing Data Structures",

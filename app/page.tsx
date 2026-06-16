@@ -1,6 +1,7 @@
 import { resumeData } from "@/data/resume";
 import { Hero } from "@/components/Hero";
 import { Experience } from "@/components/Experience";
+import { TerraformModules } from "@/components/TerraformModules";
 import { Projects } from "@/components/Projects";
 import { Skills } from "@/components/Skills";
 import { AnimatedBackground } from "@/components/AnimatedBackground";
@@ -30,6 +31,7 @@ export default function Portfolio() {
               <Experience key={i} exp={exp} />
             ))}
           </div>
+          <TerraformModules modules={resumeData.terraform_modules} />
         </section>
 
         <section id="projects">

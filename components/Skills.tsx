@@ -4,10 +4,10 @@ import { Cpu, Cloud, Code, BrainCircuit, GraduationCap } from "lucide-react";
 
 export const Skills = ({ skills, education }: { skills: any, education: any[] }) => {
   const categories = [
-    { title: "Cloud & Platforms", icon: <Cloud />, items: skills.platforms },
-    { title: "AI/ML Engineering", icon: <BrainCircuit />, items: skills.ai_ml },
+    { title: "Cloud & Containers", icon: <Cloud />, items: skills.cloud },
+    { title: "IaC & Policy", icon: <Cpu />, items: skills.iac },
+    { title: "Applied AI & LLM", icon: <BrainCircuit />, items: skills.ai_ml },
     { title: "Languages", icon: <Code />, items: skills.languages },
-    { title: "Tools & Frameworks", icon: <Cpu />, items: skills.frameworks },
   ];
 
   return (
